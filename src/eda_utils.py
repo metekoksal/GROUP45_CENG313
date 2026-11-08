@@ -51,11 +51,21 @@ def plot_size_scatter(size_df, ax=None):
     return ax
 
 def plot_instance_counts(forg, ax=None):
-    """Sahte görsellerde instance sayısı dağılımını çizer."""
+    """Sahte görsellerde instance sayısı dağılımını, sayı ve yüzdelerle çizer."""
     if ax is None:
-        _, ax = plt.subplots(figsize=(6, 4))
-    forg["n_inst"].value_counts().sort_index().plot(kind="bar", ax=ax)
+        _, ax = plt.subplots(figsize=(7, 4.5))
+
+    counts = forg["n_inst"].value_counts().sort_index()
+    total = counts.sum()
+
+    bars = ax.bar(counts.index.astype(str), counts.values)
+
+    # Çubukların üstüne "sayı (yüzde)" yaz
+    labels = [f"{c}\n(%{c / total * 100:.1f})" for c in counts.values]
+    ax.bar_label(bars, labels=labels, padding=3)
+
+    ax.set_ylim(0, counts.max() * 1.15)   # etiketlere yer aç
     ax.set_xlabel("Instance sayısı")
     ax.set_ylabel("Görsel sayısı")
-    ax.set_title("Sahte görsellerde instance sayısı dağılımı")
+    ax.set_title(f"Sahte görsellerde instance sayısı dağılımı (n={total})")
     return ax
