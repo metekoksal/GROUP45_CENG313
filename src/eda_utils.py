@@ -1,7 +1,7 @@
 import pandas as pd
 from PIL import Image
 from tqdm import tqdm
-
+import matplotlib.pyplot as plt
 from .data import load_mask, union_mask
 
 
@@ -25,3 +25,13 @@ def mask_stats(df):
     forg["area_ratio"] = ratios
     forg["n_inst"] = n_inst
     return forg
+
+def plot_instance_counts(forg, ax=None):
+    """Sahte görsellerde instance sayısı dağılımını çizer."""
+    if ax is None:
+        _, ax = plt.subplots(figsize=(6, 4))
+    forg["n_inst"].value_counts().sort_index().plot(kind="bar", ax=ax)
+    ax.set_xlabel("Instance sayısı")
+    ax.set_ylabel("Görsel sayısı")
+    ax.set_title("Sahte görsellerde instance sayısı dağılımı")
+    return ax
