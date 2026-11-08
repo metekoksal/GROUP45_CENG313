@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from .config import TRAIN_AUTH, TRAIN_FORG, TRAIN_MASK
+from sklearn.model_selection import train_test_split
 
 def build_train_df():
     rows = []
@@ -12,7 +13,14 @@ def build_train_df():
     return pd.DataFrame(rows)
 
 def load_mask(path):
-    return np.load(path)            # (N, H, W)
+    return np.load(path)        # (N, H, W)
 
 def union_mask(mask):
-    return mask.max(axis=0)         # (H, W)
+    return mask.max(axis=0)     # (H, W)
+
+def split_train_val(df, val_size=0.2, seed=42):
+    """Authentic/forged oranını koruyarak train ve validation'a böler."""
+    train_df, val_df = train_test_split(
+        df, test_size=val_size, stratify=df["label"], random_state=seed
+    )
+    return train_df.reset_index(drop=True), val_df.reset_index(drop=True)
