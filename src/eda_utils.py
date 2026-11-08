@@ -26,6 +26,30 @@ def mask_stats(df):
     forg["n_inst"] = n_inst
     return forg
 
+def plot_area_ratio(forg, ax=None):
+    if ax is None:
+        _, ax = plt.subplots(figsize=(6, 4))
+    ax.hist(forg["area_ratio"] * 100, bins=50)
+    ax.axvline(forg["area_ratio"].median() * 100, color="red", ls="--", label="medyan")
+    ax.set_xscale("log")
+    ax.set_xlabel("Maske alanı (% görsel alanı, log ölçek)")
+    ax.set_ylabel("Görsel sayısı")
+    ax.set_title("Maske alanı dağılımı")
+    ax.legend()
+    return ax
+
+def plot_size_scatter(size_df, ax=None):
+    if ax is None:
+        _, ax = plt.subplots(figsize=(6, 5))
+    for label, name in [(0, "authentic"), (1, "forged")]:
+        s = size_df[size_df.label == label]
+        ax.scatter(s["w"], s["h"], s=8, alpha=0.4, label=name)
+    ax.set_xscale("log"); ax.set_yscale("log")
+    ax.set_xlabel("Genişlik (px)"); ax.set_ylabel("Yükseklik (px)")
+    ax.set_title("Görsel boyutları")
+    ax.legend()
+    return ax
+
 def plot_instance_counts(forg, ax=None):
     """Sahte görsellerde instance sayısı dağılımını çizer."""
     if ax is None:
