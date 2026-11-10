@@ -24,3 +24,9 @@ def split_train_val(df, val_size=0.2, seed=42):
         df, test_size=val_size, stratify=df["label"], random_state=seed
     )
     return train_df.reset_index(drop=True), val_df.reset_index(drop=True)
+
+def gt_instances(row):
+    """Gerçek instance maskelerini liste olarak döndürür; authentic için boş liste."""
+    if row.label == 0:
+        return []
+    return list(load_mask(row.mask_path))
