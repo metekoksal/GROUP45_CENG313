@@ -1,5 +1,5 @@
 import numpy as np
-from src.metrics import image_score
+from src.utils import image_score
 
 
 def box(r0, r1, c0, c1, h=20, w=20):

@@ -1,5 +1,5 @@
 import numpy as np
-from src.postprocess import probs_to_instances
+from src.models import probs_to_instances
 
 
 def blob(prob, r0, r1, c0, c1, v=230):
