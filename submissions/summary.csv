@@ -1,0 +1,4 @@
+yöntem,oF1,authentic,sahte
+Baseline 0,0.464,1.0,0.0
+SIFT + RANSAC,0.542,0.971,0.172
+U-Net,0.528,0.975,0.142
