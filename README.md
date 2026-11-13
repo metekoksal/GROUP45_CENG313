@@ -47,7 +47,7 @@ GROUP45_CENG313/
 │   ├── test_metrics.py                
 |   └── test_postprocess.py
 ├── data/                              # not committed (Kaggle rules + size)
-└── results/                           # summary tables (summary.csv)
+└── submissions/                       # summary table and score screenshots
 ```
 
 ## How to Download the Data
