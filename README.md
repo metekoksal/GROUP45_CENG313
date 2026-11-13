@@ -24,7 +24,7 @@ The task is to detect and segment **copy-move forgeries** in biomedical research
 |---|---|---|---|
 | Baseline 0: all authentic | 0.464 | 1.000 | 0.000 |
 | Baseline 1: SIFT + RANSAC | 0.542 | 0.971 | 0.172 |
-| Baseline 2: U-Net (ResNet34) | 0.514 | 0.912 | 0.169 |
+| Baseline 2: U-Net (ResNet34) | 0.528 | 0.975 | 0.142 |
 
 Scores are computed with our implementation of the competition metric on ≈513 validation images that were **not** used for hyperparameter tuning. Differences of about 0.03 are within noise at this sample size.
 
