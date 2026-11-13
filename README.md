@@ -78,4 +78,5 @@ unzip -q data/*.zip -d data
 
 
 Note: If GPU time is not available, download the trained weights (`unet_resnet34.pth`) from the repository's **Releases** page. Upload the file to Colab and switch the `CKPT` path in section 4.3 as the comment in the notebook describes. The training cell is then skipped. The loss curve cell only works if training was run in the same session.
+
 Last version of the notebook can be viewed through GitHub.
