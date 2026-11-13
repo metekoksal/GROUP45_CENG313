@@ -8,7 +8,7 @@ CENG313 – Introduction to Data Science
 |---|---|
 | **Group ID** | 45 |
 | **Member 1** | Mehmet Mete Köksal – 24118080026 – [@metekoksal](https://github.com/metekoksal) |
-| **Member 2** | Abdullah Oğuzhan Turgut – 181180754 – [apo1274](https://github.com/apo1274) |
+| **Member 2** | Abdullah Oğuzhan Turgut – 181180754 – [@apo1274](https://github.com/apo1274) |
 
 ## Competition
 
